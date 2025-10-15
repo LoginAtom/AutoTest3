@@ -22,19 +22,5 @@ public class EchoPostTest {
                 .body("data", equalTo(sentData));
     }
 
-    @Test
-    void postShouldFailWithWrongBody() {
-        String sentData = "some data";
 
-        given()
-                .baseUri("https://postman-echo.com")
-                .contentType("text/plain; charset=UTF-8")
-                .body(sentData)
-                .when()
-                .post("/post")
-                .then()
-                .statusCode(200)
-                // Преднамеренно неверная проверка - для демонстрации падения теста
-                .body("data", equalTo("wrong data"));
-    }
 }
